@@ -11,7 +11,7 @@
       this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this._firstConnection = false;
       this._tagContainer;
-      this._tagType = "h1";
+      this._tagType = "h2";
       this._tagText = "This is Test！";
 
       //Adding event handler for click events
