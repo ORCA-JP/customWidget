@@ -3,7 +3,7 @@
 	template.innerHTML = `
 		<form id="form">
 			<fieldset>
-				<legend>Custom Widget Text</legend>
+				<legend>Custom Widget Text2</legend>
 				<table>
 					<tr>
 						<td>Text</td>
