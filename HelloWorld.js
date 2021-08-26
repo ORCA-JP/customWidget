@@ -88,7 +88,8 @@
             var theText = document.createTextNode(this._tagText);    
             this._tagContainer.appendChild(theText); 
             this._shadowRoot.appendChild(this._tagContainer);
-          
+            
+		console.log("this is test");
        
 
         }
