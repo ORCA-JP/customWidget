@@ -1,25 +1,22 @@
 (function()  {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = ``;
+    tmpl.innerHTML = "";
 
     customElements.define('com-sap-sample-helloworld', class HelloWorld extends HTMLElement {
-
-
-		constructor() {
-			super(); 
-			this._shadowRoot = this.attachShadow({mode: "open"});
-      this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      this._firstConnection = false;
-      this._tagContainer;
-      this._tagType = "h2";
-      this._tagText = "This is Test！";
-
-      //Adding event handler for click events
-			this.addEventListener("click", event => {
-			  var event = new Event("onClick");
-				this.dispatchEvent(event);
-      });
-		}
+	constructor() {
+		super(); 
+		this._shadowRoot = this.attachShadow({mode: "open"});
+		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+		this._firstConnection = false;
+		this._tagContainer;
+		this._tagType = "h1";
+		this._tagText = "This is Test！";
+     		 //Adding event handler for click events
+		this.addEventListener("click", event => {
+			var event = new Event("onClick");
+			this.dispatchEvent(event);
+		});
+	}
 
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
@@ -29,16 +26,14 @@
 
          //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
         disconnectedCallback(){
-        
         }
 
          //When the custom widget is updated, the Custom Widget SDK framework executes this function first
-		onCustomWidgetBeforeUpdate(oChangedProperties) {
-
-		}
+	onCustomWidgetBeforeUpdate(oChangedProperties) {
+	}
 
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
-		onCustomWidgetAfterUpdate(oChangedProperties) {
+	onCustomWidgetAfterUpdate(oChangedProperties) {
             if (this._firstConnection){
                 this.redraw();
             }
@@ -46,15 +41,12 @@
         
         //When the custom widget is removed from the canvas or the analytic application is closed
         onCustomWidgetDestroy(){
-        
         }
-
         
         //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
         // Commented out by default
         /*
-        onCustomWidgetResize(width, height){
-        
+        onCustomWidgetResize(width, height){        
         }
         */
 
@@ -62,39 +54,28 @@
         get widgetText() {
             return this._tagType;
         }
-
         set widgetText(value) {
             this._tagText = value;
         }
-
-
         get headingType() {
             return this._tagType;
-            }
+	}
 
         set headingType(value) {
             this._tagType = value;
         }
-
         // End - Getters and Setters
 
         redraw(){
-            if (this._tagContainer){
-                this._tagContainer.parentNode.removeChild(this._tagContainer);
-            }
-
-            var shadow = window.getSelection(this._shadowRoot);
-            this._tagContainer = document.createElement(this._tagType);
-            var theText = document.createTextNode(this._tagText);    
-            this._tagContainer.appendChild(theText); 
-            this._shadowRoot.appendChild(this._tagContainer);
-            
+		if (this._tagContainer){
+			this._tagContainer.parentNode.removeChild(this._tagContainer);
+		}
+		var shadow = window.getSelection(this._shadowRoot);
+		this._tagContainer = document.createElement(this._tagType);
+		var theText = document.createTextNode(this._tagText);    
+		this._tagContainer.appendChild(theText); 
+		this._shadowRoot.appendChild(this._tagContainer);
 		console.log("this is test");
-       
-
-        }
-    
-    
+        }    
     });
-        
 })();
